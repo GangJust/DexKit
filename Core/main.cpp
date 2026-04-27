@@ -495,19 +495,20 @@ int DexKitFindClassUsingAnnotationTest(dexkit::DexKit &dexkit) {
                                                                     AnnotationEncodeValueMatcher::AnnotationEncodeArrayMatcher,
                                                                     CreateAnnotationEncodeArrayMatcher(
                                                                             fbb,
-                                                                            fbb.CreateVector(std::vector<AnnotationEncodeValueMatcher>{
-                                                                                    AnnotationEncodeValueMatcher::ClassMatcher
-                                                                            }),
-                                                                            fbb.CreateVector(std::vector<flatbuffers::Offset<void>>{
-                                                                                    CreateClassMatcher(
+                                                                            fbb.CreateVector(std::vector<flatbuffers::Offset<AnnotationEncodeValueMatcherUnion>>{
+                                                                                    CreateAnnotationEncodeValueMatcherUnion(
                                                                                             fbb,
-                                                                                            0,
-                                                                                            CreateStringMatcher(
+                                                                                            AnnotationEncodeValueMatcher::ClassMatcher,
+                                                                                            CreateClassMatcher(
                                                                                                     fbb,
-                                                                                                    fbb.CreateString("com/tencent/mobileqq/antiphing/a$c"),
-                                                                                                    StringMatchType::Equal
-                                                                                            )
-                                                                                    ).Union()
+                                                                                                    0,
+                                                                                                    CreateStringMatcher(
+                                                                                                            fbb,
+                                                                                                            fbb.CreateString("com/tencent/mobileqq/antiphing/a$c"),
+                                                                                                            StringMatchType::Equal
+                                                                                                    )
+                                                                                            ).Union()
+                                                                                    )
                                                                             })
                                                                     ).Union()
                                                             )
@@ -1022,19 +1023,12 @@ int DexKitFindMethodUsingNumbers(dexkit::DexKit &dexkit) {
                     0,
                     0,
                     0,
-                    fbb.CreateVector(std::vector<Number>{
-                            Number::EncodeValueInt,
-                            Number::EncodeValueLong,
-                            Number::EncodeValueFloat,
-                            Number::EncodeValueDouble,
-                            Number::EncodeValueLong
-                    }),
-                    fbb.CreateVector(std::vector<flatbuffers::Offset<void>>{
-                            CreateEncodeValueInt(fbb, 0).Union(),
-                            CreateEncodeValueLong(fbb, -1).Union(),
-                            CreateEncodeValueFloat(fbb, 0.01).Union(),
-                            CreateEncodeValueDouble(fbb, 0.987f).Union(),
-                            CreateEncodeValueLong(fbb, 114514).Union()
+                    fbb.CreateVector(std::vector<flatbuffers::Offset<NumberUnion>>{
+                            CreateNumberUnion(fbb, Number::EncodeValueInt, CreateEncodeValueInt(fbb, 0).Union()),
+                            CreateNumberUnion(fbb, Number::EncodeValueLong, CreateEncodeValueLong(fbb, -1).Union()),
+                            CreateNumberUnion(fbb, Number::EncodeValueFloat, CreateEncodeValueFloat(fbb, 0.01).Union()),
+                            CreateNumberUnion(fbb, Number::EncodeValueDouble, CreateEncodeValueDouble(fbb, 0.987f).Union()),
+                            CreateNumberUnion(fbb, Number::EncodeValueLong, CreateEncodeValueLong(fbb, 114514).Union())
                     })
             )
     );

@@ -126,24 +126,25 @@ bool HasCompositeInternal(const schema::MethodMatcher *matcher) {
 bool HasCompositeInternal(const schema::AnnotationEncodeArrayMatcher *matcher) {
     if (!matcher || !matcher->values()) return false;
     for (int i = 0; i < matcher->values()->size(); ++i) {
-        switch (matcher->values_type()->Get(i)) {
+        auto value_matcher = matcher->values()->Get(i);
+        switch (value_matcher->value_type()) {
             case schema::AnnotationEncodeValueMatcher::StringMatcher:
-                if (HasCompositeInternal(matcher->values()->GetAs<schema::StringMatcher>(i))) return true;
+                if (HasCompositeInternal(value_matcher->value_as<schema::StringMatcher>())) return true;
                 break;
             case schema::AnnotationEncodeValueMatcher::ClassMatcher:
-                if (HasCompositeInternal(matcher->values()->GetAs<schema::ClassMatcher>(i))) return true;
+                if (HasCompositeInternal(value_matcher->value_as<schema::ClassMatcher>())) return true;
                 break;
             case schema::AnnotationEncodeValueMatcher::MethodMatcher:
-                if (HasCompositeInternal(matcher->values()->GetAs<schema::MethodMatcher>(i))) return true;
+                if (HasCompositeInternal(value_matcher->value_as<schema::MethodMatcher>())) return true;
                 break;
             case schema::AnnotationEncodeValueMatcher::FieldMatcher:
-                if (HasCompositeInternal(matcher->values()->GetAs<schema::FieldMatcher>(i))) return true;
+                if (HasCompositeInternal(value_matcher->value_as<schema::FieldMatcher>())) return true;
                 break;
             case schema::AnnotationEncodeValueMatcher::AnnotationEncodeArrayMatcher:
-                if (HasCompositeInternal(matcher->values()->GetAs<schema::AnnotationEncodeArrayMatcher>(i))) return true;
+                if (HasCompositeInternal(value_matcher->value_as<schema::AnnotationEncodeArrayMatcher>())) return true;
                 break;
             case schema::AnnotationEncodeValueMatcher::AnnotationMatcher:
-                if (HasCompositeInternal(matcher->values()->GetAs<schema::AnnotationMatcher>(i))) return true;
+                if (HasCompositeInternal(value_matcher->value_as<schema::AnnotationMatcher>())) return true;
                 break;
             default:
                 break;
@@ -439,28 +440,29 @@ AnalyzeRet Analyze(const schema::AnnotationEncodeArrayMatcher *matcher, int dex_
     AnalyzeRet ret{};
     if (matcher->values()) {
         for (auto i = 0; i < matcher->values()->size(); ++i) {
-            auto type = matcher->values_type()->Get(i);
+            auto value_matcher = matcher->values()->Get(i);
+            auto type = value_matcher->value_type();
             switch (type) {
                 case schema::AnnotationEncodeValueMatcher::ClassMatcher: {
-                    auto result = Analyze(matcher->values()->GetAs<schema::ClassMatcher>(i), dex_depth + 1);
+                    auto result = Analyze(value_matcher->value_as<schema::ClassMatcher>(), dex_depth + 1);
                     ret.need_flags |= result.need_flags;
                     ret.declare_class.insert(ret.declare_class.end(), result.declare_class.begin(), result.declare_class.end());
                     break;
                 }
                 case schema::AnnotationEncodeValueMatcher::FieldMatcher: {
-                    auto result = Analyze(matcher->values()->GetAs<schema::FieldMatcher>(i), dex_depth + 1);
+                    auto result = Analyze(value_matcher->value_as<schema::FieldMatcher>(), dex_depth + 1);
                     ret.need_flags |= result.need_flags;
                     ret.declare_class.insert(ret.declare_class.end(), result.declare_class.begin(), result.declare_class.end());
                     break;
                 }
                 case schema::AnnotationEncodeValueMatcher::AnnotationEncodeArrayMatcher: {
-                    auto result = Analyze(matcher->values()->GetAs<schema::AnnotationEncodeArrayMatcher>(i), dex_depth);
+                    auto result = Analyze(value_matcher->value_as<schema::AnnotationEncodeArrayMatcher>(), dex_depth);
                     ret.need_flags |= result.need_flags;
                     ret.declare_class.insert(ret.declare_class.end(), result.declare_class.begin(), result.declare_class.end());
                     break;
                 }
                 case schema::AnnotationEncodeValueMatcher::AnnotationMatcher: {
-                    auto result = Analyze(matcher->values()->GetAs<schema::AnnotationMatcher>(i), dex_depth);
+                    auto result = Analyze(value_matcher->value_as<schema::AnnotationMatcher>(), dex_depth);
                     ret.need_flags |= result.need_flags;
                     ret.declare_class.insert(ret.declare_class.end(), result.declare_class.begin(), result.declare_class.end());
                     break;

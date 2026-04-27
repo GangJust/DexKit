@@ -25,6 +25,7 @@ package org.luckypray.dexkit.query.matchers
 
 import com.google.flatbuffers.FlatBufferBuilder
 import org.luckypray.dexkit.InnerAnnotationEncodeArrayMatcher
+import org.luckypray.dexkit.InnerAnnotationEncodeValueMatcherUnion
 import org.luckypray.dexkit.query.base.BaseMatcher
 import org.luckypray.dexkit.query.base.IAnnotationEncodeValue
 import org.luckypray.dexkit.query.enums.MatchType
@@ -447,11 +448,16 @@ class AnnotationEncodeArrayMatcher : BaseMatcher(), IAnnotationEncodeValue {
 
     @OptIn(ExperimentalUnsignedTypes::class)
     override fun innerBuild(fbb: FlatBufferBuilder): Int {
+        val valueUnions = encodeValuesMatcher?.map {
+            InnerAnnotationEncodeValueMatcherUnion.createAnnotationEncodeValueMatcherUnion(
+                fbb,
+                it.type!!.value,
+                (it.value as BaseMatcher).build(fbb)
+            )
+        }
         val root = InnerAnnotationEncodeArrayMatcher.createAnnotationEncodeArrayMatcher(
             fbb,
-            encodeValuesMatcher?.map { it.type!!.value }?.toUByteArray()
-                ?.let { InnerAnnotationEncodeArrayMatcher.createValuesTypeVector(fbb, it) } ?: 0,
-            encodeValuesMatcher?.map { (it.value as BaseMatcher).build(fbb) }?.toIntArray()
+            valueUnions?.toIntArray()
                 ?.let { InnerAnnotationEncodeArrayMatcher.createValuesVector(fbb, it) } ?: 0,
             matchType.value,
             rangeMatcher?.build(fbb) ?: 0

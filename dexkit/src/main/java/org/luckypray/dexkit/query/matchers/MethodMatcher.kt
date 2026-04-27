@@ -25,6 +25,7 @@ package org.luckypray.dexkit.query.matchers
 
 import com.google.flatbuffers.FlatBufferBuilder
 import org.luckypray.dexkit.InnerMethodMatcher
+import org.luckypray.dexkit.InnerNumberUnion
 import org.luckypray.dexkit.query.MethodMatcherList
 import org.luckypray.dexkit.query.NumberEncodeValueMatcherList
 import org.luckypray.dexkit.query.StringMatcherList
@@ -1467,6 +1468,13 @@ class MethodMatcher : BaseMatcher, IAnnotationEncodeValue {
 
     @OptIn(ExperimentalUnsignedTypes::class)
     override fun innerBuild(fbb: FlatBufferBuilder): Int {
+        val usingNumberUnions = usingNumbersMatcher?.map {
+            InnerNumberUnion.createNumberUnion(
+                fbb,
+                it.type!!.value,
+                (it.value as BaseMatcher).build(fbb),
+            )
+        }
         val root = InnerMethodMatcher.createMethodMatcher(
             fbb,
             nameMatcher?.build(fbb) ?: 0,
@@ -1480,9 +1488,7 @@ class MethodMatcher : BaseMatcher, IAnnotationEncodeValue {
                 ?.let { fbb.createVectorOfTables(it) } ?: 0,
             usingFieldsMatcher?.map { it.build(fbb) }?.toIntArray()
                 ?.let { fbb.createVectorOfTables(it) } ?: 0,
-            usingNumbersMatcher?.map { it.type!!.value }?.toUByteArray()
-                ?.let { InnerMethodMatcher.createUsingNumbersTypeVector(fbb, it) } ?: 0,
-            usingNumbersMatcher?.map { (it.value as BaseMatcher).build(fbb) }?.toIntArray()
+            usingNumberUnions?.toIntArray()
                 ?.let { InnerMethodMatcher.createUsingNumbersVector(fbb, it) } ?: 0,
             invokeMethodsMatcher?.build(fbb) ?: 0,
             callerMethodsMatcher?.build(fbb) ?: 0,

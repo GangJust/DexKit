@@ -878,8 +878,9 @@ bool DexItem::IsAnnotationEncodeArrayMatcher(const std::vector<ir::EncodedValue 
                                                                  POINT_CASE(matcher->values()), [&]() {
             auto values = AnnotationEncodeValueMatcher{};
             for (auto i = 0; i < matcher->values()->size(); ++i) {
-                auto type = matcher->values_type()->Get(i);
-                auto value = matcher->values()->GetAs<void>(i);
+                auto value_matcher = matcher->values()->Get(i);
+                auto type = value_matcher->value_type();
+                auto value = value_matcher->value();
                 values.emplace_back(type, value);
             }
             return values;
@@ -1638,51 +1639,50 @@ bool DexItem::IsUsingNumbersMatched(uint32_t method_idx, const schema::MethodMat
     typedef std::vector<EncodeNumber> Numbers;
     auto ptr = GetMatcherCache<Numbers>(MatcherCacheScope::UsingNumbers, POINT_CASE(matcher->using_numbers()), [&]() {
         auto numbers = Numbers{};
-        auto types = matcher->using_numbers_type();
         for (int i = 0; i < matcher->using_numbers()->size(); ++i) {
-            auto NumberMatcher = matcher->using_numbers()->Get(i);
-            auto type = types->Get(i);
+            auto number_matcher = matcher->using_numbers()->Get(i);
+            auto type = number_matcher->value_type();
             EncodeNumber number{};
             switch (type) {
                 case schema::Number::EncodeValueByte: {
                     number = EncodeNumber{
                             .type = BYTE,
-                            .value = {.L8 = matcher->using_numbers()->GetAs<schema::EncodeValueByte>(i)->value()}
+                            .value = {.L8 = number_matcher->value_as<schema::EncodeValueByte>()->value()}
                     };
                     break;
                 }
                 case schema::Number::EncodeValueShort: {
                     number = EncodeNumber{
                             .type = SHORT,
-                            .value = {.L16 = matcher->using_numbers()->GetAs<schema::EncodeValueShort>(i)->value()}
+                            .value = {.L16 = number_matcher->value_as<schema::EncodeValueShort>()->value()}
                     };
                     break;
                 }
                 case schema::Number::EncodeValueInt: {
                     number = EncodeNumber{
                             .type = INT,
-                            .value = {.L32 = {.int_value = matcher->using_numbers()->GetAs<schema::EncodeValueInt>(i)->value()}}
+                            .value = {.L32 = {.int_value = number_matcher->value_as<schema::EncodeValueInt>()->value()}}
                     };
                     break;
                 }
                 case schema::Number::EncodeValueLong: {
                     number = EncodeNumber{
                             .type = LONG,
-                            .value = {.L64 = {.long_value = matcher->using_numbers()->GetAs<schema::EncodeValueLong>(i)->value()}}
+                            .value = {.L64 = {.long_value = number_matcher->value_as<schema::EncodeValueLong>()->value()}}
                     };
                     break;
                 }
                 case schema::Number::EncodeValueFloat: {
                     number = EncodeNumber{
                             .type = FLOAT,
-                            .value = {.L32 = {.float_value = matcher->using_numbers()->GetAs<schema::EncodeValueFloat>(i)->value()}}
+                            .value = {.L32 = {.float_value = number_matcher->value_as<schema::EncodeValueFloat>()->value()}}
                     };
                     break;
                 }
                 case schema::Number::EncodeValueDouble: {
                     number = EncodeNumber{
                             .type = DOUBLE,
-                            .value = {.L64 = {.double_value = matcher->using_numbers()->GetAs<schema::EncodeValueDouble>(i)->value()}}
+                            .value = {.L64 = {.double_value = number_matcher->value_as<schema::EncodeValueDouble>()->value()}}
                     };
                     break;
                 }

@@ -39,8 +39,13 @@ union AnnotationEncodeValueMatcher {
     EncodeValueBoolean,
 }
 
+// Table wrapper for vector-of-union compatibility across generators.
+table AnnotationEncodeValueMatcherUnion {
+    value: AnnotationEncodeValueMatcher;
+}
+
 table AnnotationEncodeArrayMatcher {
-    values: [AnnotationEncodeValueMatcher];
+    values: [AnnotationEncodeValueMatcherUnion];
     match_type: MatchType;
     value_count: IntRange;
 }
@@ -102,6 +107,11 @@ union Number {
     EncodeValueDouble,
 }
 
+// Table wrapper for vector-of-union compatibility across generators.
+table NumberUnion {
+    value: Number;
+}
+
 table MethodMatcher {
     method_name: StringMatcher;
     access_flags: AccessFlagsMatcher;
@@ -112,7 +122,7 @@ table MethodMatcher {
     op_codes: OpCodesMatcher;
     using_strings: [StringMatcher];
     using_fields: [UsingFieldMatcher];
-    using_numbers: [Number];
+    using_numbers: [NumberUnion];
     invoking_methods: MethodsMatcher;
     method_callers: MethodsMatcher;
     proto_shorty: string;

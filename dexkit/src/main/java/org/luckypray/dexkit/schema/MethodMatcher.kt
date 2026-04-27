@@ -117,44 +117,22 @@ internal class `-MethodMatcher` : Table() {
         get() {
             val o = __offset(20); return if (o != 0) __vector_len(o) else 0
         }
-    fun usingNumbersType(j: Int) : UByte {
+    fun usingNumbers(j: Int) : `-NumberUnion`? = usingNumbers(`-NumberUnion`(), j)
+    fun usingNumbers(obj: `-NumberUnion`, j: Int) : `-NumberUnion`? {
         val o = __offset(22)
         return if (o != 0) {
-            bb.get(__vector(o) + j * 1).toUByte()
-        } else {
-            0u
-        }
-    }
-    val usingNumbersTypeLength : Int
-        get() {
-            val o = __offset(22); return if (o != 0) __vector_len(o) else 0
-        }
-    val usingNumbersTypeAsByteBuffer : ByteBuffer get() = __vector_as_bytebuffer(22, 1)
-    fun usingNumbersTypeInByteBuffer(_bb: ByteBuffer) : ByteBuffer = __vector_in_bytebuffer(_bb, 22, 1)
-    fun mutateUsingNumbersType(j: Int, usingNumbersType: UByte) : Boolean {
-        val o = __offset(22)
-        return if (o != 0) {
-            bb.put(__vector(o) + j * 1, usingNumbersType.toByte())
-            true
-        } else {
-            false
-        }
-    }
-    fun usingNumbers(obj: Table, j: Int) : Table? {
-        val o = __offset(24)
-        return if (o != 0) {
-            __union(obj, __vector(o) + j * 4)
+            obj.__assign(__indirect(__vector(o) + j * 4), bb)
         } else {
             null
         }
     }
     val usingNumbersLength : Int
         get() {
-            val o = __offset(24); return if (o != 0) __vector_len(o) else 0
+            val o = __offset(22); return if (o != 0) __vector_len(o) else 0
         }
     val invokingMethods : `-MethodsMatcher`? get() = invokingMethods(`-MethodsMatcher`())
     fun invokingMethods(obj: `-MethodsMatcher`) : `-MethodsMatcher`? {
-        val o = __offset(26)
+        val o = __offset(24)
         return if (o != 0) {
             obj.__assign(__indirect(o + bb_pos), bb)
         } else {
@@ -163,7 +141,7 @@ internal class `-MethodMatcher` : Table() {
     }
     val methodCallers : `-MethodsMatcher`? get() = methodCallers(`-MethodsMatcher`())
     fun methodCallers(obj: `-MethodsMatcher`) : `-MethodsMatcher`? {
-        val o = __offset(28)
+        val o = __offset(26)
         return if (o != 0) {
             obj.__assign(__indirect(o + bb_pos), bb)
         } else {
@@ -172,18 +150,18 @@ internal class `-MethodMatcher` : Table() {
     }
     val protoShorty : String?
         get() {
-            val o = __offset(30)
+            val o = __offset(28)
             return if (o != 0) {
                 __string(o + bb_pos)
             } else {
                 null
             }
         }
-    val protoShortyAsByteBuffer : ByteBuffer get() = __vector_as_bytebuffer(30, 1)
-    fun protoShortyInByteBuffer(_bb: ByteBuffer) : ByteBuffer = __vector_in_bytebuffer(_bb, 30, 1)
+    val protoShortyAsByteBuffer : ByteBuffer get() = __vector_as_bytebuffer(28, 1)
+    fun protoShortyInByteBuffer(_bb: ByteBuffer) : ByteBuffer = __vector_in_bytebuffer(_bb, 28, 1)
     fun allOf(j: Int) : `-MethodMatcher`? = allOf(`-MethodMatcher`(), j)
     fun allOf(obj: `-MethodMatcher`, j: Int) : `-MethodMatcher`? {
-        val o = __offset(32)
+        val o = __offset(30)
         return if (o != 0) {
             obj.__assign(__indirect(__vector(o) + j * 4), bb)
         } else {
@@ -192,11 +170,11 @@ internal class `-MethodMatcher` : Table() {
     }
     val allOfLength : Int
         get() {
-            val o = __offset(32); return if (o != 0) __vector_len(o) else 0
+            val o = __offset(30); return if (o != 0) __vector_len(o) else 0
         }
     fun anyOf(j: Int) : `-MethodMatcher`? = anyOf(`-MethodMatcher`(), j)
     fun anyOf(obj: `-MethodMatcher`, j: Int) : `-MethodMatcher`? {
-        val o = __offset(34)
+        val o = __offset(32)
         return if (o != 0) {
             obj.__assign(__indirect(__vector(o) + j * 4), bb)
         } else {
@@ -205,11 +183,11 @@ internal class `-MethodMatcher` : Table() {
     }
     val anyOfLength : Int
         get() {
-            val o = __offset(34); return if (o != 0) __vector_len(o) else 0
+            val o = __offset(32); return if (o != 0) __vector_len(o) else 0
         }
     fun noneOf(j: Int) : `-MethodMatcher`? = noneOf(`-MethodMatcher`(), j)
     fun noneOf(obj: `-MethodMatcher`, j: Int) : `-MethodMatcher`? {
-        val o = __offset(36)
+        val o = __offset(34)
         return if (o != 0) {
             obj.__assign(__indirect(__vector(o) + j * 4), bb)
         } else {
@@ -218,7 +196,7 @@ internal class `-MethodMatcher` : Table() {
     }
     val noneOfLength : Int
         get() {
-            val o = __offset(36); return if (o != 0) __vector_len(o) else 0
+            val o = __offset(34); return if (o != 0) __vector_len(o) else 0
         }
     companion object {
         fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
@@ -227,8 +205,8 @@ internal class `-MethodMatcher` : Table() {
             _bb.order(ByteOrder.LITTLE_ENDIAN)
             return (obj.__assign(_bb.getInt(_bb.position()) + _bb.position(), _bb))
         }
-        fun createMethodMatcher(builder: FlatBufferBuilder, methodNameOffset: Int, accessFlagsOffset: Int, declaringClassOffset: Int, returnTypeOffset: Int, parametersOffset: Int, annotationsOffset: Int, opCodesOffset: Int, usingStringsOffset: Int, usingFieldsOffset: Int, usingNumbersTypeOffset: Int, usingNumbersOffset: Int, invokingMethodsOffset: Int, methodCallersOffset: Int, protoShortyOffset: Int, allOfOffset: Int, anyOfOffset: Int, noneOfOffset: Int) : Int {
-            builder.startTable(17)
+        fun createMethodMatcher(builder: FlatBufferBuilder, methodNameOffset: Int, accessFlagsOffset: Int, declaringClassOffset: Int, returnTypeOffset: Int, parametersOffset: Int, annotationsOffset: Int, opCodesOffset: Int, usingStringsOffset: Int, usingFieldsOffset: Int, usingNumbersOffset: Int, invokingMethodsOffset: Int, methodCallersOffset: Int, protoShortyOffset: Int, allOfOffset: Int, anyOfOffset: Int, noneOfOffset: Int) : Int {
+            builder.startTable(16)
             addNoneOf(builder, noneOfOffset)
             addAnyOf(builder, anyOfOffset)
             addAllOf(builder, allOfOffset)
@@ -236,7 +214,6 @@ internal class `-MethodMatcher` : Table() {
             addMethodCallers(builder, methodCallersOffset)
             addInvokingMethods(builder, invokingMethodsOffset)
             addUsingNumbers(builder, usingNumbersOffset)
-            addUsingNumbersType(builder, usingNumbersTypeOffset)
             addUsingFields(builder, usingFieldsOffset)
             addUsingStrings(builder, usingStringsOffset)
             addOpCodes(builder, opCodesOffset)
@@ -248,7 +225,7 @@ internal class `-MethodMatcher` : Table() {
             addMethodName(builder, methodNameOffset)
             return endMethodMatcher(builder)
         }
-        fun startMethodMatcher(builder: FlatBufferBuilder) = builder.startTable(17)
+        fun startMethodMatcher(builder: FlatBufferBuilder) = builder.startTable(16)
         fun addMethodName(builder: FlatBufferBuilder, methodName: Int) = builder.addOffset(0, methodName, 0)
         fun addAccessFlags(builder: FlatBufferBuilder, accessFlags: Int) = builder.addOffset(1, accessFlags, 0)
         fun addDeclaringClass(builder: FlatBufferBuilder, declaringClass: Int) = builder.addOffset(2, declaringClass, 0)
@@ -274,17 +251,7 @@ internal class `-MethodMatcher` : Table() {
             return builder.endVector()
         }
         fun startUsingFieldsVector(builder: FlatBufferBuilder, numElems: Int) = builder.startVector(4, numElems, 4)
-        fun addUsingNumbersType(builder: FlatBufferBuilder, usingNumbersType: Int) = builder.addOffset(9, usingNumbersType, 0)
-        @kotlin.ExperimentalUnsignedTypes
-        fun createUsingNumbersTypeVector(builder: FlatBufferBuilder, data: UByteArray) : Int {
-            builder.startVector(1, data.size, 1)
-            for (i in data.size - 1 downTo 0) {
-                builder.addByte(data[i].toByte())
-            }
-            return builder.endVector()
-        }
-        fun startUsingNumbersTypeVector(builder: FlatBufferBuilder, numElems: Int) = builder.startVector(1, numElems, 1)
-        fun addUsingNumbers(builder: FlatBufferBuilder, usingNumbers: Int) = builder.addOffset(10, usingNumbers, 0)
+        fun addUsingNumbers(builder: FlatBufferBuilder, usingNumbers: Int) = builder.addOffset(9, usingNumbers, 0)
         fun createUsingNumbersVector(builder: FlatBufferBuilder, data: IntArray) : Int {
             builder.startVector(4, data.size, 4)
             for (i in data.size - 1 downTo 0) {
@@ -293,10 +260,10 @@ internal class `-MethodMatcher` : Table() {
             return builder.endVector()
         }
         fun startUsingNumbersVector(builder: FlatBufferBuilder, numElems: Int) = builder.startVector(4, numElems, 4)
-        fun addInvokingMethods(builder: FlatBufferBuilder, invokingMethods: Int) = builder.addOffset(11, invokingMethods, 0)
-        fun addMethodCallers(builder: FlatBufferBuilder, methodCallers: Int) = builder.addOffset(12, methodCallers, 0)
-        fun addProtoShorty(builder: FlatBufferBuilder, protoShorty: Int) = builder.addOffset(13, protoShorty, 0)
-        fun addAllOf(builder: FlatBufferBuilder, allOf: Int) = builder.addOffset(14, allOf, 0)
+        fun addInvokingMethods(builder: FlatBufferBuilder, invokingMethods: Int) = builder.addOffset(10, invokingMethods, 0)
+        fun addMethodCallers(builder: FlatBufferBuilder, methodCallers: Int) = builder.addOffset(11, methodCallers, 0)
+        fun addProtoShorty(builder: FlatBufferBuilder, protoShorty: Int) = builder.addOffset(12, protoShorty, 0)
+        fun addAllOf(builder: FlatBufferBuilder, allOf: Int) = builder.addOffset(13, allOf, 0)
         fun createAllOfVector(builder: FlatBufferBuilder, data: IntArray) : Int {
             builder.startVector(4, data.size, 4)
             for (i in data.size - 1 downTo 0) {
@@ -305,7 +272,7 @@ internal class `-MethodMatcher` : Table() {
             return builder.endVector()
         }
         fun startAllOfVector(builder: FlatBufferBuilder, numElems: Int) = builder.startVector(4, numElems, 4)
-        fun addAnyOf(builder: FlatBufferBuilder, anyOf: Int) = builder.addOffset(15, anyOf, 0)
+        fun addAnyOf(builder: FlatBufferBuilder, anyOf: Int) = builder.addOffset(14, anyOf, 0)
         fun createAnyOfVector(builder: FlatBufferBuilder, data: IntArray) : Int {
             builder.startVector(4, data.size, 4)
             for (i in data.size - 1 downTo 0) {
@@ -314,7 +281,7 @@ internal class `-MethodMatcher` : Table() {
             return builder.endVector()
         }
         fun startAnyOfVector(builder: FlatBufferBuilder, numElems: Int) = builder.startVector(4, numElems, 4)
-        fun addNoneOf(builder: FlatBufferBuilder, noneOf: Int) = builder.addOffset(16, noneOf, 0)
+        fun addNoneOf(builder: FlatBufferBuilder, noneOf: Int) = builder.addOffset(15, noneOf, 0)
         fun createNoneOfVector(builder: FlatBufferBuilder, data: IntArray) : Int {
             builder.startVector(4, data.size, 4)
             for (i in data.size - 1 downTo 0) {
