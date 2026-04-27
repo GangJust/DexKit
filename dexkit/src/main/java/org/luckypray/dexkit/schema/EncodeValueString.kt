@@ -40,7 +40,7 @@ internal class `-EncodeValueString` : Table() {
     val valueAsByteBuffer : ByteBuffer get() = __vector_as_bytebuffer(4, 1)
     fun valueInByteBuffer(_bb: ByteBuffer) : ByteBuffer = __vector_in_bytebuffer(_bb, 4, 1)
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsEncodeValueString(_bb: ByteBuffer): `-EncodeValueString` = getRootAsEncodeValueString(_bb, `-EncodeValueString`())
         fun getRootAsEncodeValueString(_bb: ByteBuffer, obj: `-EncodeValueString`): `-EncodeValueString` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

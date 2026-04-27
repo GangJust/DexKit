@@ -113,7 +113,7 @@ internal class `-FindClass` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsFindClass(_bb: ByteBuffer): `-FindClass` = getRootAsFindClass(_bb, `-FindClass`())
         fun getRootAsFindClass(_bb: ByteBuffer, obj: `-FindClass`): `-FindClass` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

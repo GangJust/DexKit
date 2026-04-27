@@ -42,7 +42,7 @@ internal class `-AnnotationEncodeArray` : Table() {
             val o = __offset(4); return if (o != 0) __vector_len(o) else 0
         }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsAnnotationEncodeArray(_bb: ByteBuffer): `-AnnotationEncodeArray` = getRootAsAnnotationEncodeArray(_bb, `-AnnotationEncodeArray`())
         fun getRootAsAnnotationEncodeArray(_bb: ByteBuffer, obj: `-AnnotationEncodeArray`): `-AnnotationEncodeArray` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

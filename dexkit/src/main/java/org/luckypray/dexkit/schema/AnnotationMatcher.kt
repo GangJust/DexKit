@@ -83,7 +83,7 @@ internal class `-AnnotationMatcher` : Table() {
             val o = __offset(12); return if (o != 0) __vector_len(o) else 0
         }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsAnnotationMatcher(_bb: ByteBuffer): `-AnnotationMatcher` = getRootAsAnnotationMatcher(_bb, `-AnnotationMatcher`())
         fun getRootAsAnnotationMatcher(_bb: ByteBuffer, obj: `-AnnotationMatcher`): `-AnnotationMatcher` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

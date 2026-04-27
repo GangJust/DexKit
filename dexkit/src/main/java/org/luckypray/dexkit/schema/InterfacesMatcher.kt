@@ -65,7 +65,7 @@ internal class `-InterfacesMatcher` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsInterfacesMatcher(_bb: ByteBuffer): `-InterfacesMatcher` = getRootAsInterfacesMatcher(_bb, `-InterfacesMatcher`())
         fun getRootAsInterfacesMatcher(_bb: ByteBuffer, obj: `-InterfacesMatcher`): `-InterfacesMatcher` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

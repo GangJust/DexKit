@@ -65,7 +65,7 @@ internal class `-AnnotationsMatcher` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsAnnotationsMatcher(_bb: ByteBuffer): `-AnnotationsMatcher` = getRootAsAnnotationsMatcher(_bb, `-AnnotationsMatcher`())
         fun getRootAsAnnotationsMatcher(_bb: ByteBuffer, obj: `-AnnotationsMatcher`): `-AnnotationsMatcher` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

@@ -176,7 +176,7 @@ internal class `-ClassMeta` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsClassMeta(_bb: ByteBuffer): `-ClassMeta` = getRootAsClassMeta(_bb, `-ClassMeta`())
         fun getRootAsClassMeta(_bb: ByteBuffer, obj: `-ClassMeta`): `-ClassMeta` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

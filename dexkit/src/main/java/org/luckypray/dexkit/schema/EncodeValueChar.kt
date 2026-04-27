@@ -43,7 +43,7 @@ internal class `-EncodeValueChar` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsEncodeValueChar(_bb: ByteBuffer): `-EncodeValueChar` = getRootAsEncodeValueChar(_bb, `-EncodeValueChar`())
         fun getRootAsEncodeValueChar(_bb: ByteBuffer, obj: `-EncodeValueChar`): `-EncodeValueChar` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

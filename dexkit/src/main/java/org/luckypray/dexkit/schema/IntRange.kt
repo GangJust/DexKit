@@ -57,7 +57,7 @@ internal class `-IntRange` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsIntRange(_bb: ByteBuffer): `-IntRange` = getRootAsIntRange(_bb, `-IntRange`())
         fun getRootAsIntRange(_bb: ByteBuffer, obj: `-IntRange`): `-IntRange` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

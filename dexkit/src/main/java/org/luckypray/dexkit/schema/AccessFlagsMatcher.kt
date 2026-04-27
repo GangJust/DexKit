@@ -57,7 +57,7 @@ internal class `-AccessFlagsMatcher` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsAccessFlagsMatcher(_bb: ByteBuffer): `-AccessFlagsMatcher` = getRootAsAccessFlagsMatcher(_bb, `-AccessFlagsMatcher`())
         fun getRootAsAccessFlagsMatcher(_bb: ByteBuffer, obj: `-AccessFlagsMatcher`): `-AccessFlagsMatcher` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

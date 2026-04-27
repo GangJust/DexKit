@@ -103,7 +103,7 @@ internal class `-BatchFindClassUsingStrings` : Table() {
             val o = __offset(12); return if (o != 0) __vector_len(o) else 0
         }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsBatchFindClassUsingStrings(_bb: ByteBuffer): `-BatchFindClassUsingStrings` = getRootAsBatchFindClassUsingStrings(_bb, `-BatchFindClassUsingStrings`())
         fun getRootAsBatchFindClassUsingStrings(_bb: ByteBuffer, obj: `-BatchFindClassUsingStrings`): `-BatchFindClassUsingStrings` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

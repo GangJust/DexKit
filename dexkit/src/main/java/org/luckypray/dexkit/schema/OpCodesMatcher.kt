@@ -75,7 +75,7 @@ internal class `-OpCodesMatcher` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsOpCodesMatcher(_bb: ByteBuffer): `-OpCodesMatcher` = getRootAsOpCodesMatcher(_bb, `-OpCodesMatcher`())
         fun getRootAsOpCodesMatcher(_bb: ByteBuffer, obj: `-OpCodesMatcher`): `-OpCodesMatcher` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

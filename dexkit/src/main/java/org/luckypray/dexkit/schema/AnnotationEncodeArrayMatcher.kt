@@ -87,7 +87,7 @@ internal class `-AnnotationEncodeArrayMatcher` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsAnnotationEncodeArrayMatcher(_bb: ByteBuffer): `-AnnotationEncodeArrayMatcher` = getRootAsAnnotationEncodeArrayMatcher(_bb, `-AnnotationEncodeArrayMatcher`())
         fun getRootAsAnnotationEncodeArrayMatcher(_bb: ByteBuffer, obj: `-AnnotationEncodeArrayMatcher`): `-AnnotationEncodeArrayMatcher` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

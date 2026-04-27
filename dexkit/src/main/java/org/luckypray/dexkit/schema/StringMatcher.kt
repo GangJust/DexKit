@@ -68,7 +68,7 @@ internal class `-StringMatcher` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsStringMatcher(_bb: ByteBuffer): `-StringMatcher` = getRootAsStringMatcher(_bb, `-StringMatcher`())
         fun getRootAsStringMatcher(_bb: ByteBuffer, obj: `-StringMatcher`): `-StringMatcher` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

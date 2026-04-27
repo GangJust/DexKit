@@ -60,7 +60,7 @@ internal class `-AnnotationEncodeValueMeta` : Table() {
         val o = __offset(8); return if (o != 0) __union(obj, o + bb_pos) else null
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsAnnotationEncodeValueMeta(_bb: ByteBuffer): `-AnnotationEncodeValueMeta` = getRootAsAnnotationEncodeValueMeta(_bb, `-AnnotationEncodeValueMeta`())
         fun getRootAsAnnotationEncodeValueMeta(_bb: ByteBuffer, obj: `-AnnotationEncodeValueMeta`): `-AnnotationEncodeValueMeta` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

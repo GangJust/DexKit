@@ -133,7 +133,7 @@ internal class `-MethodMeta` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsMethodMeta(_bb: ByteBuffer): `-MethodMeta` = getRootAsMethodMeta(_bb, `-MethodMeta`())
         fun getRootAsMethodMeta(_bb: ByteBuffer, obj: `-MethodMeta`): `-MethodMeta` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

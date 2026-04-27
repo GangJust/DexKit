@@ -49,7 +49,7 @@ internal class `-AnnotationElementMeta` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsAnnotationElementMeta(_bb: ByteBuffer): `-AnnotationElementMeta` = getRootAsAnnotationElementMeta(_bb, `-AnnotationElementMeta`())
         fun getRootAsAnnotationElementMeta(_bb: ByteBuffer, obj: `-AnnotationElementMeta`): `-AnnotationElementMeta` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

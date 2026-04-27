@@ -119,7 +119,7 @@ android {
 }
 
 dependencies {
-    implementation("com.google.flatbuffers:flatbuffers-java:23.5.26")
+    implementation("com.google.flatbuffers:flatbuffers-java:25.2.10")
     implementation("dev.rikka.ndk.thirdparty:cxx:1.2.0")
     //noinspection DifferentStdlibGradleVersion
     implementation("org.jetbrains.kotlin:kotlin-stdlib") {

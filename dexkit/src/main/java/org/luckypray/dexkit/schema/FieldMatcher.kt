@@ -131,7 +131,7 @@ internal class `-FieldMatcher` : Table() {
             val o = __offset(22); return if (o != 0) __vector_len(o) else 0
         }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsFieldMatcher(_bb: ByteBuffer): `-FieldMatcher` = getRootAsFieldMatcher(_bb, `-FieldMatcher`())
         fun getRootAsFieldMatcher(_bb: ByteBuffer, obj: `-FieldMatcher`): `-FieldMatcher` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

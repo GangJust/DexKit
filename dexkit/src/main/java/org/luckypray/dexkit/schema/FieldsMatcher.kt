@@ -65,7 +65,7 @@ internal class `-FieldsMatcher` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsFieldsMatcher(_bb: ByteBuffer): `-FieldsMatcher` = getRootAsFieldsMatcher(_bb, `-FieldsMatcher`())
         fun getRootAsFieldsMatcher(_bb: ByteBuffer, obj: `-FieldsMatcher`): `-FieldsMatcher` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

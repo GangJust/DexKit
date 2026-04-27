@@ -51,7 +51,7 @@ internal class `-ParametersMatcher` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsParametersMatcher(_bb: ByteBuffer): `-ParametersMatcher` = getRootAsParametersMatcher(_bb, `-ParametersMatcher`())
         fun getRootAsParametersMatcher(_bb: ByteBuffer, obj: `-ParametersMatcher`): `-ParametersMatcher` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

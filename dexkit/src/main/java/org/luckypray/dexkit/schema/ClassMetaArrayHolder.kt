@@ -42,7 +42,7 @@ internal class `-ClassMetaArrayHolder` : Table() {
             val o = __offset(4); return if (o != 0) __vector_len(o) else 0
         }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsClassMetaArrayHolder(_bb: ByteBuffer): `-ClassMetaArrayHolder` = getRootAsClassMetaArrayHolder(_bb, `-ClassMetaArrayHolder`())
         fun getRootAsClassMetaArrayHolder(_bb: ByteBuffer, obj: `-ClassMetaArrayHolder`): `-ClassMetaArrayHolder` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

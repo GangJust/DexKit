@@ -65,7 +65,7 @@ internal class `-MethodsMatcher` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsMethodsMatcher(_bb: ByteBuffer): `-MethodsMatcher` = getRootAsMethodsMatcher(_bb, `-MethodsMatcher`())
         fun getRootAsMethodsMatcher(_bb: ByteBuffer, obj: `-MethodsMatcher`): `-MethodsMatcher` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

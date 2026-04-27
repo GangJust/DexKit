@@ -110,7 +110,7 @@ internal class `-FieldMeta` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsFieldMeta(_bb: ByteBuffer): `-FieldMeta` = getRootAsFieldMeta(_bb, `-FieldMeta`())
         fun getRootAsFieldMeta(_bb: ByteBuffer, obj: `-FieldMeta`): `-FieldMeta` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

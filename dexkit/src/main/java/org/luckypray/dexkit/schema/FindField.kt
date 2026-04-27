@@ -136,7 +136,7 @@ internal class `-FindField` : Table() {
         }
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsFindField(_bb: ByteBuffer): `-FindField` = getRootAsFindField(_bb, `-FindField`())
         fun getRootAsFindField(_bb: ByteBuffer, obj: `-FindField`): `-FindField` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)

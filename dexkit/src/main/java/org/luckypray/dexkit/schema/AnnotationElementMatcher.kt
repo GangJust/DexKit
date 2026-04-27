@@ -55,7 +55,7 @@ internal class `-AnnotationElementMatcher` : Table() {
         val o = __offset(8); return if (o != 0) __union(obj, o + bb_pos) else null
     }
     companion object {
-        fun validateVersion() = Constants.FLATBUFFERS_23_5_26()
+        fun validateVersion() = Constants.FLATBUFFERS_25_2_10()
         fun getRootAsAnnotationElementMatcher(_bb: ByteBuffer): `-AnnotationElementMatcher` = getRootAsAnnotationElementMatcher(_bb, `-AnnotationElementMatcher`())
         fun getRootAsAnnotationElementMatcher(_bb: ByteBuffer, obj: `-AnnotationElementMatcher`): `-AnnotationElementMatcher` {
             _bb.order(ByteOrder.LITTLE_ENDIAN)
