@@ -5,6 +5,7 @@
 .gradle
 .externalNativeBuild
 .cxx
+.kotlin
 local.properties
 .dexkit-sysroot/
 
